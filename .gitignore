@@ -1,0 +1,43 @@
+# PlatformIO / build
+.pio/
+build/
+*.elf
+*.bin
+*.hex
+*.map
+*.o
+*.d
+
+# ESP-IDF
+sdkconfig.*
+!sdkconfig.defaults
+managed_components/
+dependencies.lock
+
+# Renode
+*.log
+renode-*.txt
+snapshots/
+renode/
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*~
+notes/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Generated report
+*.docx
+*.pdf
+.~lock.*#
+
+# OS
+.DS_Store
+Thumbs.db

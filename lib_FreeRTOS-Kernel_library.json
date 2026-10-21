@@ -1,0 +1,7 @@
+{
+  "name": "FreeRTOS-Kernel",
+  "build": {
+    "srcFilter": ["+<*.c>"],
+    "flags": ["-Iinclude"]
+  }
+}

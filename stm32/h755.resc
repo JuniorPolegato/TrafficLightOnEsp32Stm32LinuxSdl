@@ -1,0 +1,26 @@
+using sysbus
+mach create "nucleo"
+machine LoadPlatformDescription @platforms/boards/nucleo_h753zi.repl
+
+$bin ?= @.pio/build/h755_renode/firmware.elf
+
+sysbus.nvic Frequency 64000000
+
+#sysbus.adc3 SetDefaultValue 1950 3
+#sysbus.adc3 FeedVoltageSampleToChannel 3 1950 1
+
+macro reset
+"""
+    sysbus LoadELF $bin
+"""
+runMacro $reset
+
+macro btn1
+"""
+sysbus.gpioPortC.UserButton1 Press
+sleep 0.1
+sysbus.gpioPortC.UserButton1 Release
+"""
+
+showAnalyzer sysbus.usart3      # ST-Link VCP UART on Nucleo
+showAnalyzer ltdc
