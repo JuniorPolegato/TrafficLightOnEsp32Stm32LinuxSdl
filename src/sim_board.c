@@ -41,7 +41,6 @@ void sim_board_create(void)
     lv_obj_set_style_bg_color(board, lv_color_black(), 0);
     obj_no_scroll(board);
 
-    /* bezel + T-Display screen */
     lv_obj_t *bezel = lv_obj_create(board);
     lv_obj_set_size(bezel, SCR_W + 12, SCR_H + 12);
     lv_obj_set_pos(bezel, 14, 8);
@@ -52,19 +51,17 @@ void sim_board_create(void)
     obj_no_scroll(bezel);
 
     root = lv_obj_create(bezel);
-    lv_obj_remove_style_all(root);          /* clean 135x240 area, clips children */
+    lv_obj_remove_style_all(root);
     lv_obj_set_size(root, SCR_W, SCR_H);
     lv_obj_center(root);
     lv_obj_set_style_bg_opa(root, LV_OPA_COVER, 0);
     obj_no_scroll(root);
 
-    /* buttons */
     make_btn(board, "GPIO0",  0, 14);
     make_btn(board, "GPIO35", 1, 60);
 
-    /* battery slider */
     lv_obj_t *s = lv_slider_create(board);
-    lv_obj_set_size(s, 16, 110);            /* height > width -> vertical */
+    lv_obj_set_size(s, 16, 110);
     lv_obj_set_pos(s, 212, 122);
     lv_slider_set_range(s, 3000, 4200);
     lv_slider_set_value(s, bat_mv, LV_ANIM_OFF);
@@ -74,11 +71,11 @@ void sim_board_create(void)
     lv_obj_set_style_text_color(lbl_bat, lv_color_white(), 0);
     lv_obj_set_style_text_font(lbl_bat, &lv_font_montserrat_10, 0);
     lv_obj_set_pos(lbl_bat, 200, 242);
-    lv_obj_send_event(s, LV_EVENT_VALUE_CHANGED, NULL);   /* initial text */
+    lv_obj_send_event(s, LV_EVENT_VALUE_CHANGED, NULL);
 }
 
-lv_obj_t *platform_ui_root(void)   { return root; }
-void      platform_battery_init(void) {}
-uint32_t  platform_battery_mv(void) { return (uint32_t)bat_mv; }
+lv_obj_t *platform_ui_root(void)        { return root; }
+void      platform_signal_init(void)    {}
+uint32_t  platform_signal_read_mv(void) { return synth_signal_mv((uint32_t)bat_mv); }
 
 #endif

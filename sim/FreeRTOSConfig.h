@@ -13,6 +13,8 @@
 
 #define configUSE_MUTEXES                   1
 #define configUSE_RECURSIVE_MUTEXES         1
+#define configUSE_COUNTING_SEMAPHORES       1
+#define configUSE_TASK_NOTIFICATIONS        1
 #define configUSE_TIMERS                    1
 #define configTIMER_TASK_PRIORITY           (configMAX_PRIORITIES - 1)
 #define configTIMER_QUEUE_LENGTH            10

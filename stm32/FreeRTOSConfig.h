@@ -38,7 +38,7 @@
 #define configUSE_TRACE_FACILITY                1
 #define configGENERATE_RUN_TIME_STATS           0
 
-/* ---------- Software timers (used by tick_cb) ---------- */
+/* ---------- Software timers (not used by the app v0.2) ------ */
 #define configUSE_TIMERS                        1
 #define configTIMER_TASK_PRIORITY               (configMAX_PRIORITIES - 1)
 #define configTIMER_QUEUE_LENGTH                10
